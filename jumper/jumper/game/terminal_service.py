@@ -6,6 +6,7 @@ class TerminalService:
     """
 
     def draw_picture():
-            pass
+        for line in self.parachute:
+                print(line)
     def read_text():
             pass
