@@ -1,4 +1,7 @@
 from doctest import master
+from logging import PlaceHolder
+from mimetypes import guess_all_extensions
+from pickle import NONE
 from xmlrpc.client import boolean
 from game.terminal_service import TerminalService
 from game.jumper import Jumper
@@ -19,6 +22,7 @@ class Director:
         self.master_word = None
         self.drawing = None
         self.word_dashes = None
+        self.lives = 4
 
         """ Constructs a new Director.
         
@@ -33,42 +37,64 @@ class Director:
         drawing, word_dashes = self.jumper.create_drawing(self.master_word)
         self.terminal_service.draw_picture(drawing, word_dashes)
 
-        """Starts the game by running the main game loop.
-        
-        Args:
-            self (Director): an instance of Director.
+        """
+        Starts the game by running the main game loop.
         """
         while self._is_playing:
             self._get_inputs()
             self._do_updates()
             self._do_outputs()
 
+        # TODO TODO TODO
+        # # If endgame conditions are met the word, picture, and your guesses would be printed
+        # self.terminal_service.read_text(master_word, self.drawing, self.word_dashes)
+
     def _get_inputs(self):
         """
         Args:
             self (Director): An instance of Director.
         """
+        #
         letter = self.terminal_service.read_text('Guess a letter: ')
         self.letter = letter
         
     def _do_updates(self):
+        # Compare the letter guessed to the word selected
         boolean = self.words.compare_words(self.letter)
         assert type(boolean) == bool
+        
+        # If not False (or true) Then they must have guessed incorrectly, thus they lose a life.
+        if not boolean:
+            self.lives -= 1
+
+        # The guess is then sent to jumper so the drawing can be updated
         self.jumper.guess(boolean, self.letter)
+
+        # The drawing created and the list of dashes (or correct words) are retrieved and then put in variables
+        # to eventually be given to the terminal service for printing.
         drawing, word_dashes = self.jumper._update_drawing()
         self.drawing, self.word_dashes = drawing, word_dashes
         
 
         """
-
         Args:
             self (Director): An instance of Director.
         """
         
     def _do_outputs(self):
+        # The picture is drawn and printed to terminal
         self.terminal_service.draw_picture(self.drawing, self.word_dashes)
 
-        #TODO Lives: Which class would take care of that?
+        # Lives are calculated to check if an end condition is met for the sentinel loop.
+        if self.lives == 0:
+            self._is_playing = False
+        
+        # The guesses are calculated to see if all the letters within the word have been guessed.
+       
+       
+        # TODO HAVE AN ADDITION TO WORDS THAT SEES IF ALL OF THE LETTERS TO THE WORD HAVE BEEN GUESSED. RETURN THAT SOMEHOW TO BE CHECKED HERE
+        # GIVING AN END CONDITION IF SO. 
+            
         """
 
         Args:
