@@ -38,7 +38,7 @@ class Director:
         # TODO TODO TODO
         # If endgame conditions are met the word, picture, and your guesses would be printed
         self.terminal_service.draw_picture(self.drawing, self.word_dashes)
-        self.terminal_service.read_text(self.master_word, self.lives)
+        self.terminal_service.display_end_game(self.master_word, self.lives)
 
 
     def _get_inputs(self):
