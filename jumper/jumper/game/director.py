@@ -1,3 +1,4 @@
+from multiprocessing import log_to_stderr
 from game.terminal_service import TerminalService
 from game.jumper import Jumper
 from game.words import Words 
@@ -93,3 +94,10 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
+
+print lives ___
+print THE WORD WAS ____
+if lives > 0
+    print you won with ___ # of lives
+else:
+    print you lost and have no lives remaining
