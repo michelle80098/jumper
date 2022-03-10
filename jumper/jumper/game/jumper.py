@@ -4,6 +4,7 @@ class Jumper:
         self._the_word = None
         self._dashes = []
         self._parachute = None 
+        self._lives_lost = 0
     def create_drawing(self, word):
 
         line_1 = " ___  "
@@ -27,6 +28,7 @@ class Jumper:
     def guess(self, boolean, user_letter):
         letter = user_letter
         list_of_letters = self._the_word
+        
 
 
         if boolean == True:
@@ -36,7 +38,9 @@ class Jumper:
                     self._dashes[index] = letter
                     list_of_letters[index] = '_'
         else:
-            self._parachute[0] 
+            self._parachute[self._lives_lost] = ''
+            self._lives_lost += 1
+
 
     def winner(self):
         if "_" not in self._dashes:
