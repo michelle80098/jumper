@@ -1,7 +1,9 @@
 class Jumper:
     #  must have attributes (any global variable) will need __init__(self)
     def __init__(self):
-        pass
+        self._the_word = None
+        self._dashes = []
+        self._parachute
     def create_drawing(self, word):
 
         line_1 = " ___  "
@@ -14,20 +16,31 @@ class Jumper:
         
         self.parachute = [line_1, line_2, line_3, line_4, line_5, line_6, line_7] 
 
+        self._the_word = word
+        number_of_dashes = len(self._the_word)
+        for n in number_of_dashes:
+            self._dashes.append("_") 
         
-        list_of_letters = list(word)
-        number_of_dashes = len(list(word))
-        
-        # return self.parachute 
-
+        return self._parachute, self._dashes
 
     # take input from user from Director class 
-    def guess(self, boolean, letter):
+    def guess(self, boolean, user_letter):
         if boolean == True:
-            
+            for letter in self._the_word:
+                if user_letter == letter:
+                    self._dashes.replace(letter)
+        else:
+            self.update_drawing(self)
+
+    def winner(self):
+        if "_" not in self._dashes:
+            return True
+        else:
+            return False
+
 
     # update drawing based on inp
-    def _update_drawing(self):
-        pass
+    def update_drawing(self):
+        self._parachute[0] 
         # return list of drawing at the end of update drawing method
         
