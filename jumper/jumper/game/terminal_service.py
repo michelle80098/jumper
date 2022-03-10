@@ -7,12 +7,15 @@ class TerminalService:
     
     
     def draw_picture(self, parachute, letters):
+        for line in parachute:
+            print(line)
+        print(letters)
+        
+        space = ''
         for i in letters:
-            word = letters + " " + i
+            word = space + " " + i
             print(word)
-        # for line in parachute:
-        #     print(line)
-        # print(letters)
+        
         # TODO For loop to display the letters list in draw_picture
 
     def read_text(self):
