@@ -43,7 +43,7 @@ class Words:
         the_word = random.choice(words)
         the_word.lower()
 
-        print(the_word)
+        # print(the_word)
 
         #turn word into a list of letters
         letter = ''
