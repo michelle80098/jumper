@@ -4,6 +4,8 @@ class TerminalService:
     The responsibility of a TerminalService is to provide input and output operations for the 
     terminal.
     """
+    
+    
     def draw_picture(self, parachute, letters):
         for line in parachute:
             print(line)
@@ -16,8 +18,14 @@ class TerminalService:
                 letter = input('Guess a letter: ')
         return letter
             
-    def display_end_game(self):
+    def display_end_game(self, master_word, lives):
         # TODO Director will be giving you all of the information that you need
+        print(f"The correct word is:{master_word} ")
+        if lives > 0:
+            print(f"well done word smith, you've won with {lives} left.")
+        elif lives <= 0:
+            print(f'You are no word smith, the correct word was {master_word}')
+
 
         # Information passed will be the number of lives remaining. If you have more than 0 lives remaining
         # then you won. In both cases whether you have won or lost you will be given remaining lives (an int)
@@ -26,4 +34,4 @@ class TerminalService:
         # if they didn't guess everything correctly (Also a List)
         
         # TODO print endgame information
-        pass
+        
