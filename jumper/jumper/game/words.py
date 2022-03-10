@@ -28,7 +28,7 @@ class Words:
         """
         Creates a list of words
         """
-        words = ['Clark', 'Michelle', 'Dillon', 'Grant', 'Matt', 'Object', 'Oriented', 'Programming', 'Classes']
+        words = ['clark', 'michelle', 'dillon', 'grant', 'matt', 'object', 'oriented', 'programming', 'classes']
 
         return words
 
@@ -42,6 +42,8 @@ class Words:
         words = self._create_words()
         the_word = random.choice(words)
         the_word.lower()
+
+        print(the_word)
 
         #turn word into a list of letters
         letter = ''
@@ -57,7 +59,7 @@ class Words:
         Compares the parameter 'guess' to the _the_word and returns a boolean
         if the word contains the letter guess
         """
-        if guess in self._the_word:
+        if guess.lower() in self._the_word:
             is_correct = True
         else:
             is_correct = False

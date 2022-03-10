@@ -14,21 +14,24 @@ class Jumper:
         line_6 = " /|\  "
         line_7 = " / \  "
         
-        self.parachute = [line_1, line_2, line_3, line_4, line_5, line_6, line_7] 
+        self._parachute = [line_1, line_2, line_3, line_4, line_5, line_6, line_7] 
 
         self._the_word = word
         number_of_dashes = len(self._the_word)
-        for n in number_of_dashes:
+        for _ in range(number_of_dashes):
             self._dashes.append("_") 
         
         return self._parachute, self._dashes
 
     # take input from user from Director class 
     def guess(self, boolean, user_letter):
+        letter = user_letter
+
         if boolean == True:
             for letter in self._the_word:
                 if user_letter == letter:
-                    self._dashes.replace(letter)
+                    index = self._the_word.index(letter)
+                    self._dashes[index] = letter
         else:
             self._parachute[0] 
 
