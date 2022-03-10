@@ -4,10 +4,8 @@ from game.words import Words
 
 class Director:
     """A person who directs the game. 
-    
     The responsibility of a Director is to control the sequence of play.
     """
-
     def __init__(self):
         self._is_playing = True
         self.words = Words()
@@ -20,29 +18,28 @@ class Director:
         self.lives = 4
 
         """ Constructs a new Director.
-        
         Args:
             self (Director): an instance of Director.
-            
         """
         
+
     def start_game(self):
         master_word = self.words.word_select()
         self.master_word = master_word
         drawing, word_dashes = self.jumper.create_drawing(self.master_word)
         self.terminal_service.draw_picture(drawing, word_dashes)
 
-        """
-        Starts the game by running the main game loop.
-        """
+        # The Main Game Loop
         while self._is_playing:
             self._get_inputs()
             self._do_updates()
             self._do_outputs()
 
         # TODO TODO TODO
-        # # If endgame conditions are met the word, picture, and your guesses would be printed
-        # self.terminal_service.read_text(master_word, self.drawing, self.word_dashes)
+        # If endgame conditions are met the word, picture, and your guesses would be printed
+        self.terminal_service.draw_picture(self.drawing, self.word_dashes)
+        self.terminal_service.read_text(self.master_word, self.lives)
+
 
     def _get_inputs(self):
         """
@@ -50,9 +47,10 @@ class Director:
             self (Director): An instance of Director.
         """
         #
-        letter = self.terminal_service.read_text('Guess a letter: ')
+        letter = self.terminal_service.read_text()
         self.letter = letter
         
+
     def _do_updates(self):
         # Compare the letter guessed to the word selected
         boolean = self.words.compare_words(self.letter)
@@ -67,15 +65,15 @@ class Director:
 
         # The drawing created and the list of dashes (or correct words) are retrieved and then put in variables
         # to eventually be given to the terminal service for printing.
-        drawing, word_dashes = self.jumper._update_drawing()
+        drawing, word_dashes = self.jumper.update_drawing()
         self.drawing, self.word_dashes = drawing, word_dashes
-        
 
         """
         Args:
             self (Director): An instance of Director.
         """
-        
+
+
     def _do_outputs(self):
         # The picture is drawn and printed to terminal
         self.terminal_service.draw_picture(self.drawing, self.word_dashes)
@@ -87,8 +85,8 @@ class Director:
         # The guesses are calculated to see if all the letters within the word have been guessed.
        
        
-        # TODO HAVE AN ADDITION TO WORDS THAT SEES IF ALL OF THE LETTERS TO THE WORD HAVE BEEN GUESSED. RETURN THAT SOMEHOW TO BE CHECKED HERE
-        # GIVING AN END CONDITION IF SO. 
+        # TODO HAVE AN ADDITION TO WORDS THAT SEES IF ALL OF THE LETTERS TO THE WORD HAVE BEEN 
+        # GUESSED. RETURN THAT SOMEHOW TO BE CHECKED HERE GIVING AN END CONDITION IF SO. 
             
         """
 
