@@ -7,9 +7,12 @@ class TerminalService:
     
     
     def draw_picture(self, parachute, letters):
-        for line in parachute:
-            print(line)
-        print(letters)
+        for i in letters:
+            word = letters + " " + i
+            print(word)
+        # for line in parachute:
+        #     print(line)
+        # print(letters)
         # TODO For loop to display the letters list in draw_picture
 
     def read_text(self):
@@ -20,7 +23,7 @@ class TerminalService:
             
     def display_end_game(self, master_word, lives):
         # TODO Director will be giving you all of the information that you need
-        print(f"The correct word is:{master_word} ")
+        
         if lives > 0:
             print(f"well done word smith, you've won with {lives} left.")
         elif lives <= 0:
@@ -35,3 +38,4 @@ class TerminalService:
         
         # TODO print endgame information
         
+        # a change
