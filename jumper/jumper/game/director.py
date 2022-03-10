@@ -94,10 +94,3 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-
-print lives ___
-print THE WORD WAS ____
-if lives > 0
-    print you won with ___ # of lives
-else:
-    print you lost and have no lives remaining
