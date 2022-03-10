@@ -84,11 +84,9 @@ class Director:
             self._is_playing = False
         
         # The guesses are calculated to see if all the letters within the word have been guessed.
-       
-       
-        # TODO HAVE AN ADDITION TO WORDS THAT SEES IF ALL OF THE LETTERS TO THE WORD HAVE BEEN 
-        # GUESSED. RETURN THAT SOMEHOW TO BE CHECKED HERE GIVING AN END CONDITION IF SO. 
-            
+        have_won = self.jumper.winner()
+        if have_won:
+            self._is_playing = False
         """
 
         Args:
