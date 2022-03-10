@@ -3,7 +3,7 @@ class Jumper:
     def __init__(self):
         self._the_word = None
         self._dashes = []
-        self._parachute
+        self._parachute = None 
     def create_drawing(self, word):
 
         line_1 = " ___  "
@@ -30,7 +30,7 @@ class Jumper:
                 if user_letter == letter:
                     self._dashes.replace(letter)
         else:
-            self.update_drawing(self)
+            self._parachute[0] 
 
     def winner(self):
         if "_" not in self._dashes:
@@ -38,9 +38,7 @@ class Jumper:
         else:
             return False
 
-
     # update drawing based on inp
     def update_drawing(self):
-        self._parachute[0] 
-        # return list of drawing at the end of update drawing method
+        return self._parachute, self._dashes
         
