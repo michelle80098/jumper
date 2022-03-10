@@ -26,12 +26,15 @@ class Jumper:
     # take input from user from Director class 
     def guess(self, boolean, user_letter):
         letter = user_letter
+        list_of_letters = self._the_word
+
 
         if boolean == True:
             for letter in self._the_word:
                 if user_letter == letter:
-                    index = self._the_word.index(letter)
+                    index = list_of_letters.index(letter)
                     self._dashes[index] = letter
+                    list_of_letters[index] = '_'
         else:
             self._parachute[0] 
 
