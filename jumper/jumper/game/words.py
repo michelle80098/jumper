@@ -28,7 +28,7 @@ class Words:
         """
         Creates a list of words
         """
-        words = ['clark', 'michelle', 'dillon', 'grant', 'matt', 'object', 'oriented', 'programming', 'classes']
+        words = ['clark', 'michelle', 'dallin', 'grant', 'matt', 'object', 'oriented', 'programming', 'classes']
 
         return words
 
